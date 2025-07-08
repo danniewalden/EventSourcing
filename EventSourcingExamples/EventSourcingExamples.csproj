@@ -37,7 +37,6 @@
     <ItemGroup>
       <Folder Include="Functional\Reads\GetSeatSelection\" />
       <Folder Include="Functional\Writes\Reservation\" />
-      <Folder Include="Functional\Writes\Seat\" />
       <Folder Include="Functional\Writes\Ticket\" />
       <Folder Include="Oop\Reads\GetSeatSelection\" />
       <Folder Include="Oop\Writes\Reservation\" />

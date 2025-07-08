@@ -14,8 +14,6 @@ public static class Projection
             DisplayTime = movieAdded.DisplayTime,
             TicketPrice = movieAdded.TicketPrice
         },
-        TicketPriceIncreased ticketPriceIncreased => readModel with { TicketPrice = readModel.TicketPrice + ticketPriceIncreased.Amount },
-        TicketPriceDecreased ticketPriceDecreased => readModel with { TicketPrice = readModel.TicketPrice - ticketPriceDecreased.Amount },
         _ => throw new InvalidOperationException($"{nameof(ReadModel)} doesn't know how to apply the {@event.GetType().Name} event")
     };
 

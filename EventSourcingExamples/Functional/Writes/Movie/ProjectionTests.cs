@@ -14,14 +14,12 @@ public class ProjectionTests
         MovieEvent[] events =
         {
             new MovieAdded(movieId, "Inception", 100, DateTimeOffset.Now, 15.0),
-            new TicketPriceIncreased(movieId, 5.0), // price should now be 20
-            new TicketPriceDecreased(movieId, 2.0) // price should now be 18       
         };
         
         // Act
         var movieState = Projection.Apply(events);
 
         // Assert
-        movieState.ShouldBeOfType<MovieState.PendingScreening>().TicketPrice.ShouldBe(18);
+        movieState.ShouldBeOfType<MovieState.PendingScreening>().TicketPrice.ShouldBe(15);
     }
 }
