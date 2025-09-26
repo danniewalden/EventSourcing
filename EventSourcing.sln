@@ -1,8 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcingExamples", "EventSourcingExamples\EventSourcingExamples.csproj", "{6F67AD21-54FB-4F39-8815-90B55AD880C7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcing.Marten_Wolverine", "EventSourcing.Marten_Wolverine\EventSourcing.Marten_Wolverine.csproj", "{6F67AD21-54FB-4F39-8815-90B55AD880C7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppHost", "AppHost\AppHost.csproj", "{3D76AA16-58B6-449E-9F6E-90FDB0C6F096}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcing.Functional", "EventSourcing.Functional\EventSourcing.Functional.csproj", "{053B1D22-4065-4277-8644-CF6A5B8991EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{F3577034-D2AF-48A6-A5A4-53D6FB28EEE3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcing.Aggregates", "EventSourcing.Aggregates\EventSourcing.Aggregates.csproj", "{6D39341E-5410-4629-9A26-75FFE1C8559F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventSourcing.DCB", "EventSourcing.DCB\EventSourcing.DCB.csproj", "{A20B6BD3-5165-48D2-89F6-248AABC0E214}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +26,21 @@ Global
 		{3D76AA16-58B6-449E-9F6E-90FDB0C6F096}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D76AA16-58B6-449E-9F6E-90FDB0C6F096}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D76AA16-58B6-449E-9F6E-90FDB0C6F096}.Release|Any CPU.Build.0 = Release|Any CPU
+		{053B1D22-4065-4277-8644-CF6A5B8991EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{053B1D22-4065-4277-8644-CF6A5B8991EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{053B1D22-4065-4277-8644-CF6A5B8991EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{053B1D22-4065-4277-8644-CF6A5B8991EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3577034-D2AF-48A6-A5A4-53D6FB28EEE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3577034-D2AF-48A6-A5A4-53D6FB28EEE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3577034-D2AF-48A6-A5A4-53D6FB28EEE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3577034-D2AF-48A6-A5A4-53D6FB28EEE3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D39341E-5410-4629-9A26-75FFE1C8559F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D39341E-5410-4629-9A26-75FFE1C8559F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D39341E-5410-4629-9A26-75FFE1C8559F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D39341E-5410-4629-9A26-75FFE1C8559F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A20B6BD3-5165-48D2-89F6-248AABC0E214}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A20B6BD3-5165-48D2-89F6-248AABC0E214}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A20B6BD3-5165-48D2-89F6-248AABC0E214}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A20B6BD3-5165-48D2-89F6-248AABC0E214}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

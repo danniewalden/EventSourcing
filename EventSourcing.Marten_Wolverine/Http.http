@@ -1,0 +1,28 @@
+### GET request to example server
+GET https://examples.http-client.intellij.net/get
+    ?generated-in=JetBrains Rider
+
+### AddMovie endpoint request
+PUT {{baseUrl}}/api/movies
+Content-Type: application/json
+
+{
+  "title": "Inception",
+  "numberOfSeats": 100,
+  "displayTime": "2025-09-26T19:30:00Z",
+  "ticketPrice": 12.5
+}
+
+### GetAvailableMovies endpoint request
+GET {{baseUrl}}/api/movies
+Accept: application/json
+
+### IncreaseTicketPrice endpoint request
+POST {{baseUrl}}/api/movies/{{movieId}}/increase-price
+Content-Type: application/json
+
+{
+  "increaseBy": 10.0
+}
+
+###

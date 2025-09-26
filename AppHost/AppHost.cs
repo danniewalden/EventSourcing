@@ -2,6 +2,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Projects;
 
+
 var builder = DistributedApplication.CreateBuilder(args);
 
 builder.Services.AddLogging(logging =>
@@ -11,7 +12,7 @@ builder.Services.AddLogging(logging =>
 });
 
 // Add projects
-var api = builder.AddProject<EventSourcingExamples>("eventsourcing-examples");
+var api = builder.AddProject<EventSourcing_Marten_Wolverine>("eventsourcing-examples");
 
 
 var postgres = builder.AddPostgres("postgres")

@@ -1,3 +1,0 @@
-namespace WebApplication1.VerticalSlicesWithMartenAndWolverine.Writes.Movie.IncreateTicketPrice;
-
-public record Command(TicketPrice Amount);
