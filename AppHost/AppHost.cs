@@ -14,7 +14,6 @@ builder.Services.AddLogging(logging =>
 // Add projects
 var api = builder.AddProject<EventSourcing_Marten_Wolverine>("eventsourcing-examples");
 
-
 var postgres = builder.AddPostgres("postgres")
         .WithDataVolume("eventsourcing-examples-data")
         .WithPgAdmin(resourceBuilder => resourceBuilder.WithHostPort(45119))

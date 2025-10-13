@@ -16,7 +16,6 @@ public static class IncreaseTicketPrice
         public RequestValidator()
         {
             RuleFor(x => x.IncreaseBy).MustBeValueObject(TicketPrice.Create);
-            RuleFor(p => p.IncreaseBy).Must(p => true);
         }
     }
 
@@ -34,7 +33,7 @@ public static class IncreaseTicketPrice
             : (Results.NoContent(), new AppendToStream(id, new TicketPriceIncreased(id, TicketPrice.Create(request.IncreaseBy).GetValueOrThrow())));
     }
 
-    public static readonly double MaxTicketPrice = 500;
+    public const double MaxTicketPrice = 500;
 
     private static bool TicketPricePolicyIsViolated(double currentTicketPrice, double priceIncrease, double maxTicketPrice) => currentTicketPrice + priceIncrease >= maxTicketPrice;
 }
@@ -42,7 +41,6 @@ public static class IncreaseTicketPrice
 [Union]
 public partial record IncreaseTicketPriceState
 {
-    [Identity]
     public required Guid Id { get; init; }
 
     public partial record Initial;
