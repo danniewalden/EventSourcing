@@ -13,13 +13,6 @@
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ac0e7b08_002D43d4_002D4878_002D9a11_002Dccd479fd26d7/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Test1" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;Or&gt;
-    &lt;Project Location="/home/dannie/RiderProjects/EventSourcing/EventSourcingExamples" Presentation="&amp;lt;EventSourcingExamples&amp;gt;" /&gt;
-    &lt;TestAncestor&gt;
-      &lt;TestId&gt;xUnit::A20B6BD3-5165-48D2-89F6-248AABC0E214::net9.0::EventSourcing.DCB.IncreaseTicketPriceTests&lt;/TestId&gt;
-      &lt;TestId&gt;xUnit::6D39341E-5410-4629-9A26-75FFE1C8559F::net9.0::WebApplication1.Oop.Movie.MovieAggregateTests.Should_Increase_Ticket_Price&lt;/TestId&gt;
-      &lt;TestId&gt;xUnit::6D39341E-5410-4629-9A26-75FFE1C8559F::net9.0::EventSourcing.Aggregates.Movie.MovieAggregateTests&lt;/TestId&gt;
-    &lt;/TestAncestor&gt;
-  &lt;/Or&gt;
+  &lt;Solution /&gt;
 &lt;/SessionState&gt;</s:String>
 	</wpf:ResourceDictionary>

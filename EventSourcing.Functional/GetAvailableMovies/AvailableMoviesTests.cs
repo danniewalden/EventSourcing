@@ -29,7 +29,7 @@ public class AvailableMoviesTests
                 Title = title,
                 NumberOfAvailableSeats = numberOfSeats,
                 DisplayTime = displayTime,
-                TicketPrice = 18.0
+                TicketPrice = Price
             }
         );
     }
