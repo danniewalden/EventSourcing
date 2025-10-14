@@ -69,7 +69,10 @@ public class MovieAggregateTests
     [Fact]
     public void Should_Fail_When_Increasing_Price_On_an_already_Screened_Movie() => Should.Throw<InvalidOperationException>(() =>
     {
-        var aggregate = Events.Apply<MovieAggregate>(MovieAdded, new MovieScreened(TestMovieId));
+        var aggregate = Events.Apply<MovieAggregate>(
+            MovieAdded,
+            new MovieScreened(TestMovieId)
+        );
         aggregate.IncreaseTicketPrice(600);
     });
 }
