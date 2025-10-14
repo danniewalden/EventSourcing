@@ -22,7 +22,6 @@ public class MovieAggregateTests
     public void Should_Increase_Ticket_Price()
     {
         // Arrange
-        var now = DateTimeOffset.Now;
         var aggregate = Events.Apply<MovieAggregate>(MovieAdded);
 
         // Act
