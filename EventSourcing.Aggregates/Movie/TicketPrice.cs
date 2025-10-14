@@ -1,8 +1,8 @@
-namespace WebApplication1.Oop.Movie;
+namespace EventSourcing.Aggregates.Movie;
 
 public record TicketPrice
 {
-    public double Amount { get; }
+    private double Amount { get; }
 
     private TicketPrice(double amount) => Amount = amount;
 

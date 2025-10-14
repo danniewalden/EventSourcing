@@ -1,5 +1,5 @@
+using EventSourcing.Aggregates.Movie;
 using Shouldly;
-using WebApplication1.Oop.Movie;
 using Xunit;
 
 namespace WebApplication1.Oop.GetAvailableMovies;

@@ -1,4 +1,4 @@
-using WebApplication1.Oop.Movie;
+using EventSourcing.Aggregates.Movie;
 
 namespace WebApplication1.Oop.GetAvailableMovies;
 
