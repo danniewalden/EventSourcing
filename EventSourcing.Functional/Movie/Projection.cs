@@ -4,7 +4,11 @@ public static class Projection
 {
     private static MovieState Apply(MovieState state, MovieEvent @event) => (state, @event) switch
     {
-        (MovieState.Initial _, MovieAdded movieAdded) =>  new MovieState.PendingScreening(movieAdded.MovieId, movieAdded.TicketPrice),
+        (MovieState.Initial _, MovieAdded movieAdded) => new MovieState.PendingScreening(movieAdded.MovieId, movieAdded.TicketPrice),
+        (MovieState.PendingScreening pendingScreening, TicketPriceIncreased priceIncreased) => pendingScreening with
+        {
+            TicketPrice = (pendingScreening.TicketPrice + priceIncreased.IncreasedBy).UnwrapSuccess().Type
+        },
         _ => throw new InvalidOperationException($"{nameof(MovieState)} doesn't know how to apply the {@event.GetType().Name} event")
     };
 

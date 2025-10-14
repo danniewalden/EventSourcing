@@ -19,8 +19,7 @@ public class MovieDeciderTests
         var result = MovieDecider.Decide(initState, command);
 
         // Assert
-        result.ShouldSucceed()
-            .ShouldBeOfType<MovieAdded>()
+        result.ShouldSucceed<MovieAdded>()
             .MovieId.ShouldBe(TestMovieId);
     }
 

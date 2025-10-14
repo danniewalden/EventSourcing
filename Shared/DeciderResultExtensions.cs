@@ -5,15 +5,15 @@ namespace WebApplication1;
 
 public static class DeciderResultExtensions
 {
-    public static T ShouldSucceed<T>(this DeciderResult<T> result)
+    public static T ShouldSucceed<T>(this DeciderResult result) where T : Event
     {
-        result.ShouldBeOfType<DeciderResult<T>.Success>("Expected successful result but got failure");
-        return ((DeciderResult<T>.Success)result).Event;
+        result.ShouldBeOfType<DeciderResult.Success>("Expected successful result but got failure");
+        return (T)((DeciderResult.Success)result).Event;
     }
 
-    public static Error ShouldFail<T>(this DeciderResult<T> result)
+    public static Error ShouldFail(this DeciderResult result)
     {
-        result.ShouldBeOfType<DeciderResult<T>.Failure>("Expected failure result but got success");
+        result.ShouldBeOfType<DeciderResult.Failure>("Expected failure result but got success");
         return result.UnwrapFailure().Error;
     }
 }
