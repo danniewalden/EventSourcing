@@ -10,7 +10,7 @@ public static class MovieDecider
         {
             (MovieState.Screened, _) => "Cannot apply commands to an already screened movie",
             (MovieState.Initial, AddMovie c) => new MovieAdded(c.MovieId, c.Title, c.NumberOfSeats, c.DisplayTime, c.TicketPrice),
-
+            (MovieState.PendingScreening, IncreaseTicketPrice c) => new TicketPriceIncreased(c.MovieId, c.IncreaseBy),
             _ => "Invalid command for the current state"
         };
     }

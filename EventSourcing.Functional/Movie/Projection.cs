@@ -8,5 +8,5 @@ public static class Projection
         _ => throw new InvalidOperationException($"{nameof(MovieState)} doesn't know how to apply the {@event.GetType().Name} event")
     };
 
-    public static MovieState Apply(IEnumerable<MovieEvent> events) => events.Aggregate((MovieState)new MovieState.Initial(), Apply);
+    public static MovieState Apply(params IEnumerable<MovieEvent> events) => events.Aggregate((MovieState)new MovieState.Initial(), Apply);
 }

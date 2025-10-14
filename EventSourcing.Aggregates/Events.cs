@@ -2,7 +2,7 @@ namespace EventSourcing.Aggregates;
 
 public static class Events
 {
-    public static T Apply<T>(params IEnumerable<object> events)
+    public static T Apply<T>(params IEnumerable<object> events) where T : new()
     {
         var aggregate = Activator.CreateInstance<T>();
         
