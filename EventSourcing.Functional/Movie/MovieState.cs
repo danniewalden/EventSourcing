@@ -3,8 +3,6 @@ using Dunet;
 namespace EventSourcing.Functional.Movie;
 
 // State used to make decisions. (This is actually a projection)
-
-
 [Union]
 public partial record MovieState
 {
