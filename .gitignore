@@ -417,4 +417,4 @@ FodyWeavers.xsd
 *.msm
 *.msp
 
-*.sln.DotSettings.user
+**\*.sln.DotSettings.user
