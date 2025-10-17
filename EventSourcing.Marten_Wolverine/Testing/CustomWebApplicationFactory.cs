@@ -9,7 +9,12 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>, IAsyn
 
     public async Task InitializeAsync() => await Marten.InitializeAsync();
 
-    public new async Task DisposeAsync() => await Marten.DisposeAsync();
+    public new async Task DisposeAsync()
+    {
+        await Marten.DisposeAsync();
+        var store = Server.Services.GetRequiredService<IDocumentStore>();
+        await store.DisposeAsync();
+    }
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {
