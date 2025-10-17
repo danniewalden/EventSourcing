@@ -20,8 +20,8 @@ public class AddMovieTests
             var ticketPriceWhenAdded = TicketPrice.From(15).GetValueOrThrow();
 
             var response = await factory.CreateClient().PutAsJsonAsync("/api/movies", new AddMovie.Request(title, numberOfSeats, displayTime, ticketPriceWhenAdded));
-            var a = await response.Content.ReadFromJsonAsync<CreateResponse>();
-            a!.Id.ShouldNotBe(Guid.Empty);
+
+            await response.Verify();
         }
     }
 

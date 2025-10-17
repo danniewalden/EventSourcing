@@ -21,5 +21,11 @@ public class CustomWebApplicationFactory : WebApplicationFactory<Program>, IAsyn
         builder.UseSetting("ConnectionStrings:Postgres", Marten.PostgreSqlContainer.GetConnectionString());
     }
 
-    public TestScope Start() => new(Server.Services.GetRequiredService<IDocumentStore>());
+    public async Task<TestScope> Start()
+    {
+        var requiredService = Server.Services.GetRequiredService<IDocumentStore>();
+        await requiredService.Advanced.Clean.DeleteAllDocumentsAsync();
+        await requiredService.Advanced.Clean.DeleteAllEventDataAsync();
+        return new TestScope(requiredService);
+    }
 }

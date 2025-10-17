@@ -25,7 +25,7 @@ public static class IncreaseTicketPriceTests
                 new MovieAdded(movieId, title, numberOfSeats, displayTime, ticketPriceWhenAdded),
             ];
 
-            await using var scope = factory.Start();
+            await using var scope = await factory.Start();
 
             // Given
             await scope.Given(movieId, events);
@@ -56,7 +56,7 @@ public static class IncreaseTicketPriceTests
                 new MovieAdded(movieId, title, numberOfSeats, displayTime, ticketPriceWhenAdded),
             ];
 
-            await using var scope = factory.Start();
+            await using var scope = await factory.Start();
 
             // Given
             await scope.Given(movieId, events);
@@ -65,7 +65,7 @@ public static class IncreaseTicketPriceTests
             var response = await factory.CreateClient().PostAsJsonAsync($"/api/movies/{movieId}/increase-price", new IncreaseTicketPrice.Request(increasedTicketPrice));
 
             // Then
-            await VerifyJson(response.Content.ReadAsStreamAsync());
+            await response.Verify();
         }
     }
 }

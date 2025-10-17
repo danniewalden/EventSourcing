@@ -1,7 +1,5 @@
 using EventSourcing.Marten_Wolverine.Events;
 using EventSourcing.Marten_Wolverine.Testing;
-using JasperFx.Events.Projections;
-using Marten;
 using Shouldly;
 
 namespace EventSourcing.Marten_Wolverine.Features;
@@ -9,45 +7,39 @@ namespace EventSourcing.Marten_Wolverine.Features;
 public class GetAvailableMoviesTests
 {
     [Trait("Category", "Integration")]
-    public class IntegrationTests(MartenFixture fixture) : IClassFixture<MartenFixture>
+    [Collection("IntegrationTests")]
+    public class IntegrationTests(CustomWebApplicationFactory factory)
     {
         [Fact]
         public async Task Test_Projection()
         {
-            var movieId = Guid.NewGuid();
-            var displayTime = DateTimeOffset.Now;
-            const string title = "Inception";
-            const int numberOfSeats = 100;
-            var ticketPriceWhenAdded = TicketPrice.From(15).GetValueOrThrow();
-            var increasedTicketPrice = TicketPrice.From(5.0).GetValueOrThrow();
-            var decreasedTicketPrice = TicketPrice.From(2.0).GetValueOrThrow();
+            var movieId1 = Guid.NewGuid();
+            var movieId2 = Guid.NewGuid();
+            DateTimeOffset displayTime = DateTimeOffset.Now;
 
-            MovieEvent[] events =
+            MovieEvent[] movie1Events =
             [
-                new MovieAdded(movieId, title, numberOfSeats, displayTime, ticketPriceWhenAdded),
-                new TicketPriceIncreased(movieId, increasedTicketPrice), // price should now be 20
-                new TicketPriceDecreased(movieId, decreasedTicketPrice) // price should now be 18
+                new MovieAdded(movieId1, "Lord of the Rings", 50, displayTime, TicketPrice.From(15).GetValueOrThrow()),
+                new TicketPriceIncreased(movieId1, TicketPrice.From(5.0).GetValueOrThrow()), // price should now be 20
+                new TicketPriceDecreased(movieId1, TicketPrice.From(2.0).GetValueOrThrow()), // price should now be 18
             ];
 
-            // configure Marten and database
-            await using var scope = await fixture.Start(Configuration);
+            MovieEvent[] movie2Events =
+            [
+                new MovieAdded(movieId2, "Inception", 100, displayTime, TicketPrice.From(100).GetValueOrThrow()),
+            ];
 
-            // insert the events to the event store (triggers the projection) 
-            await scope.Given(movieId, events);
+            await using var scope = await factory.Start();
 
-            // load the projection from the database
-            await scope.Then(async session =>
-            {
-                var readModel = await session.LoadAsync<GetAvailableMovies.Response>(movieId);
+            // Given
+            await scope.Given(movieId1, movie1Events);
+            await scope.Given(movieId2, movie2Events);
 
-                readModel.ShouldBe(
-                    new GetAvailableMovies.Response(
-                        movieId,
-                        Title: title,
-                        NumberOfAvailableSeats: numberOfSeats,
-                        TicketPrice: 18.0)
-                );
-            });
+            // When
+            var response = await factory.CreateClient().GetAsync($"/api/movies/");
+
+            // Then
+            await response.Verify();
         }
 
         [Fact]
@@ -66,7 +58,7 @@ public class GetAvailableMoviesTests
             ];
 
             // configure Marten and database
-            await using var scope = await fixture.Start(Configuration);
+            await using var scope = await factory.Start();
 
             // insert the events to the event store (triggers the projection) 
             await scope.Given(movieId, events);
@@ -79,11 +71,13 @@ public class GetAvailableMoviesTests
                 readModel.ShouldBeNull();
             });
         }
+    }
+}
 
-        private static void Configuration(StoreOptions options)
-        {
-            options.Projections.Add<GetAvailableMoviesProjection>(ProjectionLifecycle.Inline);
-            options.Schema.For<GetAvailableMovies.Response>().DocumentAlias("read_available_movies").Identity(p => p.MovieId);
-        }
+public static class HttpResponseMessageExtensions
+{
+    public static async Task Verify(this HttpResponseMessage response)
+    {
+        await VerifyJson(response.Content.ReadAsStreamAsync());
     }
 }
