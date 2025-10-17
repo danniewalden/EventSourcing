@@ -7,6 +7,7 @@ namespace EventSourcing.Marten_Wolverine.Features;
 
 public class AddMovieTests
 {
+    [Trait("Category", "Integration")]
     [Collection("IntegrationTests")]
     public class IntegrationTests(CustomWebApplicationFactory factory)
     {

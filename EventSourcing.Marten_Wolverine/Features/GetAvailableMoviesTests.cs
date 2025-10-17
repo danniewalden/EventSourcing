@@ -8,6 +8,7 @@ namespace EventSourcing.Marten_Wolverine.Features;
 
 public class GetAvailableMoviesTests
 {
+    [Trait("Category", "Integration")]
     public class IntegrationTests(MartenFixture fixture) : IClassFixture<MartenFixture>
     {
         [Fact]
@@ -48,7 +49,7 @@ public class GetAvailableMoviesTests
                 );
             });
         }
-        
+
         [Fact]
         public async Task Should_Be_Deleted_When_Movie_Is_Screened()
         {

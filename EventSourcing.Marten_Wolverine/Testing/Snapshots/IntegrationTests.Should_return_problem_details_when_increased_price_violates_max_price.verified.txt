@@ -1,6 +1,0 @@
-﻿{
-  type: https://tools.ietf.org/html/rfc9110#section-15.5.1,
-  title: Bad Request,
-  status: 400,
-  detail: Ticket price exceeds our policy of maximum 500 per ticket
-}
