@@ -1,11 +1,12 @@
-using EventSourcing.Marten_Wolverine.VerticalSlicesWithMartenAndWolverine.Writes.Movie;
+using EventSourcing.Marten_Wolverine.Events;
+using EventSourcing.Marten_Wolverine.Plumbing;
 using JasperFx.Events.Projections;
 using JetBrains.Annotations;
 using Marten;
 using Marten.Events.Aggregation;
 using Wolverine.Http;
 
-namespace EventSourcing.Marten_Wolverine.VerticalSlicesWithMartenAndWolverine.Reads;
+namespace EventSourcing.Marten_Wolverine.Features;
 
 public static class GetAvailableMovies
 {
@@ -34,6 +35,10 @@ public class GetAvailableMoviesProjection : SingleStreamProjection<GetAvailableM
     {
         TicketPrice = state.TicketPrice + ticketPriceIncreased.Amount
     };
+    public static GetAvailableMovies.Response Apply(GetAvailableMovies.Response state, TicketPriceDecreased ticketPriceDecreased) => state with
+    {
+        TicketPrice = state.TicketPrice - ticketPriceDecreased.Amount
+    };
 
-    public static bool Delete(ScreeningFinished _) => true;
+    public static bool ShouldDelete(ScreeningFinished _) => true;
 }

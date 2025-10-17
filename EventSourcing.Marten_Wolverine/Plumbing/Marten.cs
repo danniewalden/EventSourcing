@@ -3,7 +3,7 @@ using JasperFx.Events;
 using Marten;
 using Wolverine.Marten;
 
-namespace EventSourcing.Marten_Wolverine;
+namespace EventSourcing.Marten_Wolverine.Plumbing;
 
 public static class MartenRegistryScanner
 {

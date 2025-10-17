@@ -1,6 +1,5 @@
-using EventSourcing.Marten_Wolverine;
+using EventSourcing.Marten_Wolverine.Plumbing;
 using JasperFx;
-using JasperFx.Events;
 using JasperFx.Events.Daemon;
 using Marten;
 using Marten.Events.Daemon.Internals;
@@ -11,7 +10,6 @@ using Polly;
 using Polly.Retry;
 using Scalar.AspNetCore;
 using Weasel.Core;
-using WebApplication1;
 using Wolverine;
 using Wolverine.FluentValidation;
 using Wolverine.Http;
@@ -45,6 +43,7 @@ builder.Services.AddMarten(v =>
         options.DatabaseSchemaName = "database";
         options.Events.UseArchivedStreamPartitioning = true;
         options.Events.UseIdentityMapForAggregates = true;
+        options.Events.MetadataConfig.HeadersEnabled = true;
         options.ConfigurePolly(p =>
         {
             p.AddRetry(new RetryStrategyOptions
@@ -59,7 +58,7 @@ builder.Services.AddMarten(v =>
             });
         });
         options.DisableNpgsqlLogging = true;
-        options.Events.AppendMode = EventAppendMode.Quick;
+        // options.Events.AppendMode = EventAppendMode.Quick;
 
         return options;
     })
@@ -79,7 +78,7 @@ builder.Host.UseWolverine(opts =>
     // background tasks
     opts.Policies.UseDurableLocalQueues();
 
-    opts.ApplicationAssembly = typeof(Program).Assembly;
+    opts.ApplicationAssembly = typeof(EventSourcing.Marten_Wolverine.Program).Assembly;
 
     opts.UseFluentValidation();
 });
@@ -101,4 +100,10 @@ app.MapWolverineEndpoints(options => { options.UseFluentValidationProblemDetailM
 
 app.MapScalarApiReference(options => { options.Theme = ScalarTheme.Kepler; });
 
-return await app.RunJasperFxCommands(args);
+return await app.RunJasperFxCommands([]);
+
+
+namespace EventSourcing.Marten_Wolverine
+{
+    public partial class Program;
+}

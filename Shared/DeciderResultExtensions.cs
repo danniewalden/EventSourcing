@@ -1,7 +1,6 @@
-using Shared;
 using Shouldly;
 
-namespace WebApplication1;
+namespace Shared;
 
 public static class DeciderResultExtensions
 {

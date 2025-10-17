@@ -1,6 +1,6 @@
 ﻿using EventSourcing.DCB.Events;
+using Shared;
 using Shouldly;
-using WebApplication1;
 
 namespace EventSourcing.DCB.Movie;
 

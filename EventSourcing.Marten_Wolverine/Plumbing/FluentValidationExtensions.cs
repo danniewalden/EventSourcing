@@ -1,7 +1,7 @@
 using FluentValidation;
 using Shared;
 
-namespace EventSourcing.Marten_Wolverine.VerticalSlicesWithMartenAndWolverine;
+namespace EventSourcing.Marten_Wolverine.Plumbing;
 
 public static class FluentValidationExtensions
 

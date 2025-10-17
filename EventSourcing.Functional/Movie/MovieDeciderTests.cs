@@ -1,5 +1,5 @@
-﻿using Shouldly;
-using WebApplication1;
+﻿using Shared;
+using Shouldly;
 
 namespace EventSourcing.Functional.Movie;
 

@@ -2,7 +2,7 @@ using Npgsql;
 using Testcontainers.PostgreSql;
 using Xunit;
 
-namespace EventSourcing.Marten_Wolverine.VerticalSlicesWithMartenAndWolverine;
+namespace EventSourcing.Marten_Wolverine.Testing;
 
 public class PostgreSqlFixture : IAsyncLifetime
 {
@@ -31,10 +31,10 @@ public class PostgreSqlFixture : IAsyncLifetime
         }
         catch (Exception ex)
         {
-            if (await IsContainerRunning())
-            {
-                throw new InvalidOperationException("Failed to stop PostgreSQL container and it is still running.", ex);
-            }
+            // if (await IsContainerRunning())
+            // {
+            // throw new InvalidOperationException("Failed to stop PostgreSQL container and it is still running.", ex);
+            // }
         }
     }
 

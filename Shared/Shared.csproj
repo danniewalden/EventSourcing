@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Dunet" Version="1.11.3"/>
+        <PackageReference Include="Dunet" Version="1.11.1" />
     </ItemGroup>
 
     <ItemGroup Condition="'$(Configuration)' == 'Release'">
