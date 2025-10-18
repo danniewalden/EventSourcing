@@ -8,5 +8,6 @@ public static class VerifyInitializer
     public static void Init()
     {
         UseProjectRelativeDirectory("Testing/Snapshots");
+        VerifierSettings.UseStrictJson();
     }
 }

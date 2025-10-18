@@ -63,21 +63,10 @@ public class GetAvailableMoviesTests
             // insert the events to the event store (triggers the projection) 
             await scope.Given(movieId, events);
 
-            // load the projection from the database
-            await scope.Then(async session =>
-            {
-                var readModel = await session.LoadAsync<GetAvailableMovies.Response>(movieId);
 
-                readModel.ShouldBeNull();
-            });
+            var response = await factory.CreateClient().GetAsync($"/api/movies/");
+            
+            await response.Verify();
         }
-    }
-}
-
-public static class HttpResponseMessageExtensions
-{
-    public static async Task Verify(this HttpResponseMessage response)
-    {
-        await VerifyJson(response.Content.ReadAsStreamAsync());
     }
 }
